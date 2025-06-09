@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the dataset
-df = pd.read_csv("IPL Dataset.csv")
+df = pd.read_csv(r"c:\Users\akhil\Downloads\IPL Dataset.csv")
 
 sns.set(style="whitegrid")
 plt.rcParams["figure.figsize"] = (12, 6)
@@ -86,18 +86,7 @@ plt.tight_layout()
 plt.show()
 
 
-# 6. Win Percentages of Teams – Pie Chart
-# This data requires a match-winner column which may not be present in your dataset
-# If it exists:
-# win_df = pd.read_csv("matches.csv")  # load match-level dataset if available
-# win_counts = win_df["winner"].value_counts()
-# pie = win_counts.plot.pie(autopct='%1.1f%%', figsize=(8, 8), title="Win Percentages of Teams")
-
-# Temporary placeholder if 'winner' column not available:
-print("⚠️ Pie chart for team win percentages requires match-level data with 'winner' column.")
-
-
-# 7. Venues With Highest Total Scores – Column Chart
+# 6. Venues With Highest Total Scores – Column Chart
 venue_scores = df.groupby(['match_id', 'venue'])['total_runs'].sum().reset_index()
 top_venues = venue_scores.groupby('venue')['total_runs'].mean().sort_values(ascending=False).head(10)
 
